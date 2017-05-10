@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<title>todolist</title>
+</head>
+<body>
+	<h1> To do list </h1>
+
+	<form>
+		<fieldset>
+
+			<label for="titre">TITLE :</label>
+			<input type="text" name="nom" id="titre">
+		</fieldset>
+
+
+		<fieldset>
+			<label for="liste">LISTE :</label>
+			<input type="text" name="prenom" id="liste">
+		</fieldset>
+
+
+		<input type="submit" value="Envoyer" id="button"/>
+	</form>
+
+
+	<script> 
+		let buttonadd = document.querySelector('#button');
+		let form = document.querySelector('form');
+		let i = 0;
+		form.addEventListener('submit',function(event){
+			event.preventDefault();
+
+			i = i+1
+
+
+			let titre = document.querySelector('#titre').value;
+
+			let liste = document.querySelector('#liste').value;
+
+			let div = document.createElement('div');
+			div.id = 'div'+ i;
+			document.body.appendChild(div);
+
+
+			let para1 = document.createElement('p');
+			para1.innerHTML = titre;
+
+			document.body.querySelector('#div'+ i).appendChild(para1);
+
+			let para2 = document.createElement ('p');
+			para2.innerHTML = liste;
+			document.body.querySelector('#div' + i).appendChild(para2);
+
+
+			let buttondel = document.createElement('button');
+			buttondel.innerHTML = 'delete';
+			buttondel.id = 'delete'+ i;
+			document.body.querySelector('#div'+ i).appendChild(buttondel);
+
+			console.log(i);
+
+
+
+			let buttondelete = document.querySelector('#delete'+ i);
+			buttondelete.addEventListener('click', function (event){
+				this.parentNode.remove(this);
+
+				console.log('removed');
+
+			});
+
+		});
+
+
+
+	</script>
+
+
+	</body>
+	</html>
